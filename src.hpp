@@ -10,10 +10,10 @@ void Calculate(std::vector<Matrix *> keys, std::vector<Matrix *> values,
   for (size_t i = 0; i < keys.size(); ++i) {
     auto current_query = rater.GetNextQuery();
     size_t num_elements = i + 1;
-    size_t d = keys[0]->GetColumnNum();
 
     // 1. Build K_mat [num_elements, d] and V_mat [num_elements, d]
-    // We use a more efficient concatenation approach
+    // Optimization: Instead of repeated concatenation in a loop, 
+    // we can build them more efficiently.
     Matrix* K_mat = nullptr;
     Matrix* V_mat = nullptr;
 
